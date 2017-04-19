@@ -23,7 +23,7 @@ private:
 	map<unsigned long long, frame> memory; //Physical memory
 	unsigned long long cycle; //Gives unique status.
 protected:
-	unsigned long long buildPhysicalMemory(unsigned long long ppn, unsigned long long offset);
+	unsigned long long buildPhysicalAddress(unsigned long long ppn, unsigned long long offset);
 	frame buildFrame(unsigned long long offset);
 	std::map<unsigned long long, frame>::iterator findLRU();
 	std::map<unsigned long long, frame>::iterator findFIFO();

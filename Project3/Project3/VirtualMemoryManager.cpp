@@ -52,7 +52,7 @@ unsigned long long VirtualMemoryManager::LRUPolicy(unsigned long long address){
 		ppn = cycle;
 		memory[cycle] = buildFrame(offset);//Add frame to memory
 		//numSwaps++;  Should it be a swap in compulsory miss???
-		return buildPhysicalMemory(ppn, offset);
+		return buildPhysicalAddress(ppn, offset);
 	}
 	else{//Memory check
 		memoryIter = memory.find(pageTableIter->second);
@@ -62,10 +62,10 @@ unsigned long long VirtualMemoryManager::LRUPolicy(unsigned long long address){
 			memory.erase(lru->first); // Take away address from memory.
 			memory[ppn] = buildFrame(offset);
 			numSwaps++;
-			return buildPhysicalMemory(ppn, offset);
+			return buildPhysicalAddress(ppn, offset);
 		}
 		else{//HIT
-			return buildPhysicalMemory(ppn, offset);
+			return buildPhysicalAddress(ppn, offset);
 		}
 
 	}
@@ -95,7 +95,7 @@ unsigned long long VirtualMemoryManager::FIFOPolicy(unsigned long long address){
 		ppn = cycle;
 		memory[cycle] = buildFrame(offset);//Add frame to memory
 		//numSwaps++; swap in compulsory miss???
-		return buildPhysicalMemory(ppn, offset);
+		return buildPhysicalAddress(ppn, offset);
 	}
 	else{//Memory Check
 		memoryIter = memory.find(pageTableIter->second);
@@ -105,17 +105,17 @@ unsigned long long VirtualMemoryManager::FIFOPolicy(unsigned long long address){
 			memory.erase(fifo->first); // Take away address from memory.
 			memory[ppn] = buildFrame(offset);
 			numSwaps++;
-			return buildPhysicalMemory(ppn, offset);
+			return buildPhysicalAddress(ppn, offset);
 		}
 		else{//HIT
-			return buildPhysicalMemory(ppn, offset);
+			return buildPhysicalAddress(ppn, offset);
 		}
 
 	}
 }
 
 /*
-Name: buildPhysicalMemory
+Name: buildPhysicalAddress
 Description: Builds physical memory with ppn and offset
 Input: 1. ppn
 	   2. offset
@@ -124,7 +124,7 @@ Procesing: Calculates physical memory by bit shifting N times to the left ppn,
 		   and bit or the offset
 Output: physical memory
 */
-unsigned long long VirtualMemoryManager::buildPhysicalMemory(unsigned long long ppn, unsigned long long offset){
+unsigned long long VirtualMemoryManager::buildPhysicalAddress(unsigned long long ppn, unsigned long long offset){
 	unsigned long long physicalAddress = -1;
 	physicalAddress = ppn << (N/2);
 	physicalAddress = physicalAddress | offset;
