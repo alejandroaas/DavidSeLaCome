@@ -94,6 +94,7 @@ unsigned long long VirtualMemoryManager::FIFOPolicy(unsigned long long address){
 		pageTable[vpn] = cycle; //Map pageTable into physical memory
 		ppn = cycle;
 		memory[cycle] = buildFrame(offset);//Add frame to memory
+		//numSwaps++; swap in compulsory miss???
 		return buildPhysicalMemory(ppn, offset);
 	}
 	else{//Memory Check
@@ -103,6 +104,7 @@ unsigned long long VirtualMemoryManager::FIFOPolicy(unsigned long long address){
 			fifo = findFIFO();
 			memory.erase(fifo->first); // Take away address from memory.
 			memory[ppn] = buildFrame(offset);
+			numSwaps++;
 			return buildPhysicalMemory(ppn, offset);
 		}
 		else{//HIT
