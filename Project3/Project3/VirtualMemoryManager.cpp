@@ -51,13 +51,12 @@ unsigned long long VirtualMemoryManager::LRUPolicy(unsigned long long address){
 		pageTable[vpn] = cycle; //Map pageTable into physical memory
 		ppn = cycle;
 		memory[cycle] = buildFrame(offset);//Add frame to memory
-		//numSwaps++;  Should it be a swap in compulsory miss???
 		return buildPhysicalAddress(ppn, offset);
 	}
 	else{//Memory check
 		memoryIter = memory.find(pageTableIter->second);
 		ppn = pageTableIter->second;
-		if (memoryIter == memory.end()){//MISS
+		if (memoryIter->second.offset != offset){//MISS
 			lru = findLRU();
 			memory.erase(lru->first); // Take away address from memory.
 			memory[ppn] = buildFrame(offset);
@@ -94,13 +93,12 @@ unsigned long long VirtualMemoryManager::FIFOPolicy(unsigned long long address){
 		pageTable[vpn] = cycle; //Map pageTable into physical memory
 		ppn = cycle;
 		memory[cycle] = buildFrame(offset);//Add frame to memory
-		//numSwaps++; swap in compulsory miss???
 		return buildPhysicalAddress(ppn, offset);
 	}
 	else{//Memory Check
 		memoryIter = memory.find(pageTableIter->second);
 		ppn = pageTableIter->second;
-		if (memoryIter == memory.end()){//MISS
+		if (memoryIter->second.offset != offset){//MISS
 			fifo = findFIFO();
 			memory.erase(fifo->first); // Take away address from memory.
 			memory[ppn] = buildFrame(offset);
