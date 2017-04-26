@@ -1,0 +1,710 @@
+Enter policy, LRU = 1, FIFO=0 :  0
+Enter N in bits: 4
+Enter number of frames: 4
+Enter virtual address size: 8
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Compulsory miss
+Physical memory: 4
+Swaps: 0
+
+
+Give an address: Address: 1
+vpn : 0
+offset: 1
+Miss
+Physical memory: 5
+Swaps: 1
+
+
+Give an address: Address: 2
+vpn : 0
+offset: 2
+Miss
+Physical memory: 6
+Swaps: 2
+
+
+Give an address: Address: 3
+vpn : 0
+offset: 3
+Miss
+Physical memory: 7
+Swaps: 3
+
+
+Give an address: Address: 4
+vpn : 0
+offset: 4
+Miss
+Physical memory: 4
+Swaps: 4
+
+
+Give an address: Address: 5
+vpn : 0
+offset: 5
+Miss
+Physical memory: 5
+Swaps: 5
+
+
+Give an address: Address: 6
+vpn : 0
+offset: 6
+Miss
+Physical memory: 6
+Swaps: 6
+
+
+Give an address: Address: 7
+vpn : 0
+offset: 7
+Miss
+Physical memory: 7
+Swaps: 7
+
+
+Give an address: Address: 8
+vpn : 0
+offset: 8
+Miss
+Physical memory: 12
+Swaps: 8
+
+
+Give an address: Address: 9
+vpn : 0
+offset: 9
+Miss
+Physical memory: 13
+Swaps: 9
+
+
+Give an address: Address: 10
+vpn : 0
+offset: 10
+Miss
+Physical memory: 14
+Swaps: 10
+
+
+Give an address: Address: 11
+vpn : 0
+offset: 11
+Miss
+Physical memory: 15
+Swaps: 11
+
+
+Give an address: Address: 12
+vpn : 0
+offset: 12
+Miss
+Physical memory: 12
+Swaps: 12
+
+
+Give an address: Address: 13
+vpn : 0
+offset: 13
+Miss
+Physical memory: 13
+Swaps: 13
+
+
+Give an address: Address: 14
+vpn : 0
+offset: 14
+Miss
+Physical memory: 14
+Swaps: 14
+
+
+Give an address: Address: 15
+vpn : 0
+offset: 15
+Miss
+Physical memory: 15
+Swaps: 15
+
+
+Give an address: Address: 16
+vpn : 1
+offset: 0
+Compulsory miss
+Physical memory: 68
+Swaps: 15
+
+
+Give an address: Address: 17
+vpn : 1
+offset: 1
+Miss
+Physical memory: 69
+Swaps: 16
+
+
+Give an address: Address: 18
+vpn : 1
+offset: 2
+Miss
+Physical memory: 70
+Swaps: 17
+
+
+Give an address: Address: 19
+vpn : 1
+offset: 3
+Miss
+Physical memory: 71
+Swaps: 18
+
+
+Give an address: Address: 20
+vpn : 1
+offset: 4
+Miss
+Physical memory: 68
+Swaps: 19
+
+
+Give an address: Address: 20
+vpn : 1
+offset: 4
+Hit
+Physical memory: 68
+Swaps: 19
+
+
+Give an address: Address: 19
+vpn : 1
+offset: 3
+Miss
+Physical memory: 71
+Swaps: 20
+
+
+Give an address: Address: 18
+vpn : 1
+offset: 2
+Miss
+Physical memory: 70
+Swaps: 21
+
+
+Give an address: Address: 17
+vpn : 1
+offset: 1
+Miss
+Physical memory: 69
+Swaps: 22
+
+
+Give an address: Address: 16
+vpn : 1
+offset: 0
+Miss
+Physical memory: 68
+Swaps: 23
+
+
+Give an address: Address: 15
+vpn : 0
+offset: 15
+Miss
+Physical memory: 15
+Swaps: 24
+
+
+Give an address: Address: 14
+vpn : 0
+offset: 14
+Miss
+Physical memory: 14
+Swaps: 25
+
+
+Give an address: Address: 13
+vpn : 0
+offset: 13
+Miss
+Physical memory: 13
+Swaps: 26
+
+
+Give an address: Address: 12
+vpn : 0
+offset: 12
+Miss
+Physical memory: 12
+Swaps: 27
+
+
+Give an address: Address: 11
+vpn : 0
+offset: 11
+Miss
+Physical memory: 15
+Swaps: 28
+
+
+Give an address: Address: 10
+vpn : 0
+offset: 10
+Miss
+Physical memory: 14
+Swaps: 29
+
+
+Give an address: Address: 9
+vpn : 0
+offset: 9
+Miss
+Physical memory: 13
+Swaps: 30
+
+
+Give an address: Address: 8
+vpn : 0
+offset: 8
+Miss
+Physical memory: 12
+Swaps: 31
+
+
+Give an address: Address: 7
+vpn : 0
+offset: 7
+Miss
+Physical memory: 7
+Swaps: 32
+
+
+Give an address: Address: 6
+vpn : 0
+offset: 6
+Miss
+Physical memory: 6
+Swaps: 33
+
+
+Give an address: Address: 5
+vpn : 0
+offset: 5
+Miss
+Physical memory: 5
+Swaps: 34
+
+
+Give an address: Address: 4
+vpn : 0
+offset: 4
+Miss
+Physical memory: 4
+Swaps: 35
+
+
+Give an address: Address: 3
+vpn : 0
+offset: 3
+Miss
+Physical memory: 7
+Swaps: 36
+
+
+Give an address: Address: 2
+vpn : 0
+offset: 2
+Miss
+Physical memory: 6
+Swaps: 37
+
+
+Give an address: Address: 1
+vpn : 0
+offset: 1
+Miss
+Physical memory: 5
+Swaps: 38
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Miss
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Hit
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Hit
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Hit
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Hit
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Hit
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Hit
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Hit
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Hit
+Physical memory: 4
+Swaps: 39
+
+
+Give an address: Address: 5
+vpn : 0
+offset: 5
+Miss
+Physical memory: 5
+Swaps: 40
+
+
+Give an address: Address: 5
+vpn : 0
+offset: 5
+Hit
+Physical memory: 5
+Swaps: 40
+
+
+Give an address: Address: 5
+vpn : 0
+offset: 5
+Hit
+Physical memory: 5
+Swaps: 40
+
+
+Give an address: Address: 5
+vpn : 0
+offset: 5
+Hit
+Physical memory: 5
+Swaps: 40
+
+
+Give an address: Address: 5
+vpn : 0
+offset: 5
+Hit
+Physical memory: 5
+Swaps: 40
+
+
+Give an address: Address: 10
+vpn : 0
+offset: 10
+Miss
+Physical memory: 14
+Swaps: 41
+
+
+Give an address: Address: 10
+vpn : 0
+offset: 10
+Hit
+Physical memory: 14
+Swaps: 41
+
+
+Give an address: Address: 10
+vpn : 0
+offset: 10
+Hit
+Physical memory: 14
+Swaps: 41
+
+
+Give an address: Address: 10
+vpn : 0
+offset: 10
+Hit
+Physical memory: 14
+Swaps: 41
+
+
+Give an address: Address: 10
+vpn : 0
+offset: 10
+Hit
+Physical memory: 14
+Swaps: 41
+
+
+Give an address: Address: 20
+vpn : 1
+offset: 4
+Miss
+Physical memory: 68
+Swaps: 42
+
+
+Give an address: Address: 20
+vpn : 1
+offset: 4
+Hit
+Physical memory: 68
+Swaps: 42
+
+
+Give an address: Address: 20
+vpn : 1
+offset: 4
+Hit
+Physical memory: 68
+Swaps: 42
+
+
+Give an address: Address: 20
+vpn : 1
+offset: 4
+Hit
+Physical memory: 68
+Swaps: 42
+
+
+Give an address: Address: 1
+vpn : 0
+offset: 1
+Miss
+Physical memory: 5
+Swaps: 43
+
+
+Give an address: Address: 2
+vpn : 0
+offset: 2
+Miss
+Physical memory: 6
+Swaps: 44
+
+
+Give an address: Address: 3
+vpn : 0
+offset: 3
+Miss
+Physical memory: 7
+Swaps: 45
+
+
+Give an address: Address: 4
+vpn : 0
+offset: 4
+Miss
+Physical memory: 4
+Swaps: 46
+
+
+Give an address: Address: 5
+vpn : 0
+offset: 5
+Miss
+Physical memory: 5
+Swaps: 47
+
+
+Give an address: Address: 6
+vpn : 0
+offset: 6
+Miss
+Physical memory: 6
+Swaps: 48
+
+
+Give an address: Address: 7
+vpn : 0
+offset: 7
+Miss
+Physical memory: 7
+Swaps: 49
+
+
+Give an address: Address: 8
+vpn : 0
+offset: 8
+Miss
+Physical memory: 12
+Swaps: 50
+
+
+Give an address: Address: 9
+vpn : 0
+offset: 9
+Miss
+Physical memory: 13
+Swaps: 51
+
+
+Give an address: Address: 10
+vpn : 0
+offset: 10
+Miss
+Physical memory: 14
+Swaps: 52
+
+
+Give an address: Address: 99
+vpn : 6
+offset: 3
+Compulsory miss
+Physical memory: 303
+Swaps: 52
+
+
+Give an address: Address: 45
+vpn : 2
+offset: 13
+Compulsory miss
+Physical memory: 317
+Swaps: 52
+
+
+Give an address: Address: 75
+vpn : 4
+offset: 11
+Compulsory miss
+Physical memory: 319
+Swaps: 52
+
+
+Give an address: Address: 65
+vpn : 4
+offset: 1
+Miss
+Physical memory: 309
+Swaps: 53
+
+
+Give an address: Address: 65
+vpn : 4
+offset: 1
+Hit
+Physical memory: 309
+Swaps: 53
+
+
+Give an address: Address: 75
+vpn : 4
+offset: 11
+Miss
+Physical memory: 319
+Swaps: 54
+
+
+Give an address: Address: 46
+vpn : 2
+offset: 14
+Miss
+Physical memory: 318
+Swaps: 55
+
+
+Give an address: Address: 79
+vpn : 4
+offset: 15
+Miss
+Physical memory: 319
+Swaps: 56
+
+
+Give an address: Address: 69
+vpn : 4
+offset: 5
+Miss
+Physical memory: 309
+Swaps: 57
+
+
+Give an address: Address: 255
+vpn : 15
+offset: 15
+Compulsory miss
+Physical memory: 351
+Swaps: 57
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Miss
+Physical memory: 4
+Swaps: 58
+
+
+Give an address: Address: 1
+vpn : 0
+offset: 1
+Miss
+Physical memory: 5
+Swaps: 59
+
+
+Give an address: Address: 2
+vpn : 0
+offset: 2
+Miss
+Physical memory: 6
+Swaps: 60
+
+
+Give an address: Address: 3
+vpn : 0
+offset: 3
+Miss
+Physical memory: 7
+Swaps: 61
+
+
+Give an address: 
+Virtual Memory Manager killed!
