@@ -3,6 +3,10 @@
 #include <map>
 #include <vector>
 #include <string>
+
+/*
+Team: Alejandro Andrade, David De Matheu, Kenneth Au
+*/
 struct frame
 {
 	unsigned long long offset;

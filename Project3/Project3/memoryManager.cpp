@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 /*
+Team: Alejandro Andrade, David De Matheu, Kenneth Au
 Constructor: Initializes variables
 */
 memoryManager::memoryManager(ReplacementPolicy p, unsigned int pS, unsigned int nF, unsigned int vA) : virtualMemoryManagerInterface(p,  pS, nF, vA)

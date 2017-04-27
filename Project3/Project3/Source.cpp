@@ -1,9 +1,11 @@
 #include "memoryManager.h"
 #include <stdio.h>
 using namespace std;
-//Test the Virtual memory manager here!!!!!!
+/*
+Interface to test the Virtual memory manager here!!!!!!
+Team: Alejandro Andrade, David De Matheu, Kenneth Au
+*/
 int main(){
-	int i;
 	unsigned int virtualAddressSize = -1, numFrames= -1, N= -1, policy=-1;
 	unsigned long long address;
 	bool go=true;

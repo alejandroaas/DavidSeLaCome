@@ -2,7 +2,9 @@
 #include <iostream>
 #include <cassert>
 #include <cmath>
-
+/*
+Team: Alejandro Andrade, David De Matheu, Kenneth Au
+*/
 using namespace std;
 
 enum ReplacementPolicy
