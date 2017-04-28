@@ -10,7 +10,7 @@ Constructor: Initializes variables
 memoryManager::memoryManager(ReplacementPolicy p, unsigned int pS, unsigned int nF, unsigned int vA) : virtualMemoryManagerInterface(p,  pS, nF, vA)
 {
 	//Base class inits important values...
-	cycle = 0;//Init cycle
+	cycle = -1;//Init cycle
 }
 /*
 Name:memoryAccess
@@ -44,38 +44,30 @@ unsigned long long memoryManager::LRUPolicy(unsigned long long address){
 	unsigned long long temp;
 	unsigned long long vpn = address >> N; // Virtual page number --> key of pageTable map
 	cout <<"vpn : "<< vpn << endl;
-	unsigned long long ppn = -1; // Physical page number --> key of memory map 
 	temp = vpn << N;
 	unsigned long long offset = address - temp;
 	cout << "offset: " << offset << endl;
-	std::map<unsigned long long, unsigned long long>::iterator pageTableIter;
-	std::map<unsigned long long, frame>::iterator memoryIter, lru;
+	std::map<unsigned long long, page>::iterator pageTableIter, lru;
 	pageTableIter = pageTable.find(vpn);
 	//PageTable Check
-	if (pageTableIter == pageTable.end()){//Compulsory miss
-		cout << "Compulsory miss" << endl;
-		pageTable[vpn] = cycle; //Map pageTable into physical memory
-		ppn = cycle;
-		memory[cycle] = buildFrame(offset);//Add frame to memory
-		return buildPhysicalAddress(ppn, offset);
+	if (pageTableIter != pageTable.end()) { //Hit
+		pageTableIter->second.status = cycle;
+		return buildPhysicalAddress(pageTable[vpn].ppn, offset);
 	}
-	else{//Memory check
-		memoryIter = memory.find(pageTableIter->second);
-		ppn = pageTableIter->second;
-		if (memoryIter == memory.end() || memoryIter->second.offset != offset){//MISS
-			cout << "Miss" << endl;
-			lru = findLRU();
-			memory.erase(lru->first); // Take away address from memory.
-			memory[ppn] = buildFrame(offset);
-			numSwaps++;
-			return buildPhysicalAddress(ppn, offset);
-		}
-		else{//HIT
-			cout << "Hit" << endl;
-			memory[ppn].status = cycle;  // Update age of frame
-			return buildPhysicalAddress(ppn, offset);
-		}
-
+	else if (pageTable.size() < numFrames) {//Compulsory miss
+		cout << "Compulsory miss" << endl;
+		pageTable[vpn].ppn = cycle; //Map pageTable into physical memory
+		pageTable[vpn].status = cycle;
+		return buildPhysicalAddress(pageTable[vpn].ppn, offset);
+	}
+	else {//Miss and Swap
+		lru = findLRU();
+		pageTable[vpn].ppn = lru->second.ppn;
+		pageTable[vpn].status = cycle;
+		pageTable.erase(lru->first);// Take away address from memory.
+		cout << "Miss" << endl;
+		numSwaps++;
+		return buildPhysicalAddress(pageTable[vpn].ppn, offset);
 	}
 
 }
@@ -92,38 +84,29 @@ unsigned long long memoryManager::FIFOPolicy(unsigned long long address){
 	unsigned long long temp;
 	unsigned long long vpn = address >> N; // Virtual page number --> key of pageTable map
 	cout << "vpn : " << vpn << endl;
-	unsigned long long ppn = -1; // Physical page number --> key of memory map 
 	temp = vpn << N;
 	unsigned long long offset = address - temp;
 	cout << "offset: " << offset << endl;
-	std::map<unsigned long long, unsigned long long>::iterator pageTableIter;
-	std::map<unsigned long long, frame>::iterator memoryIter, fifo;
+	std::map<unsigned long long, page>::iterator pageTableIter, fifo;
 	pageTableIter = pageTable.find(vpn);
-
 	//PageTable Check
-	if (pageTableIter == pageTable.end()){//Compulsory miss
-		cout << "Compulsory miss" << endl;
-		pageTable[vpn] = cycle; //Map pageTable into physical memory
-		ppn = cycle;
-		memory[cycle] = buildFrame(offset);//Add frame to memory
-		return buildPhysicalAddress(ppn, offset);
+	if (pageTableIter != pageTable.end()){ //Hit
+		return buildPhysicalAddress(pageTable[vpn].ppn, offset);
 	}
-	else{//Memory Check
-		memoryIter = memory.find(pageTableIter->second);
-		ppn = pageTableIter->second;
-		if (memoryIter == memory.end() || memoryIter->second.offset != offset){//MISS
-			cout << "Miss" << endl;
-			fifo = findFIFO();
-			memory.erase(fifo->first); // Take away address from memory.
-			memory[ppn] = buildFrame(offset);
-			numSwaps++;
-			return buildPhysicalAddress(ppn, offset);
-		}
-		else{//HIT
-			cout << "Hit" << endl;
-			return buildPhysicalAddress(ppn, offset);
-		}
-
+	else if (pageTable.size() < numFrames) {//Compulsory miss
+		cout << "Compulsory miss" << endl;
+		pageTable[vpn].ppn = cycle; //Map pageTable into physical memory
+		pageTable[vpn].status = cycle;
+		return buildPhysicalAddress(pageTable[vpn].ppn, offset);
+	}
+	else{//Miss and Swap
+		fifo = findFIFO();
+		pageTable[vpn].ppn = fifo->second.ppn;
+		pageTable[vpn].status = cycle;
+		pageTable.erase(fifo->first);// Take away address from memory.
+		cout << "Miss" << endl;
+		numSwaps++;
+		return buildPhysicalAddress(pageTable[vpn].ppn, offset);
 	}
 }
 
@@ -144,21 +127,7 @@ unsigned long long memoryManager::buildPhysicalAddress(unsigned long long ppn, u
 	return physicalAddress;
 
 }
-/*
-Name: buildFrame
-Description: Builds a frame with the ofset and cycle.
-Input: 1. offset
-	   2. Globaly references cycle
-Procesing: assign offset and status of frame.
-Output: frame
-*/
-frame memoryManager::buildFrame(unsigned long long offset){
-	frame memFrame;//Frame for saving data
-	memFrame.offset = offset;
-	memFrame.status = cycle;
-	return memFrame;
 
-}
 /*
 Name: findLRU
 Description: Finds memory with smallest status
@@ -166,12 +135,12 @@ Input: N/A. Uses class variables.
 Procesing: Loop that checks for the smallest memory.
 Output: Memory map iterator
 */
-std::map<unsigned long long, frame>::iterator memoryManager::findLRU(){
-	std::map<unsigned long long, frame>::iterator memoryIter, lru;
-	lru = memory.begin();
-	for (memoryIter = memory.begin(); memoryIter != memory.end(); memoryIter++){
-		if (lru->second.status > memoryIter->second.status){
-			lru = memoryIter;
+std::map<unsigned long long, page>::iterator memoryManager::findLRU(){
+	std::map<unsigned long long, page>::iterator pageIter, lru;
+	lru = pageTable.begin();
+	for (pageIter = pageTable.begin(); pageIter != pageTable.end(); pageIter++) {
+		if (lru->second.status > pageIter->second.status) {
+			lru = pageIter;
 		}
 	}
 	return lru;
@@ -183,12 +152,12 @@ Input: N/A. Uses class variables.
 Procesing: Loop that checks for the smallest memory.
 Output: Memory map iterator
 */
-std::map<unsigned long long, frame>::iterator memoryManager::findFIFO(){
-	std::map<unsigned long long, frame>::iterator memoryIter, fifo;
-	fifo = memory.begin();
-	for (memoryIter = memory.begin(); memoryIter != memory.end(); memoryIter++){
-		if (fifo->second.status > memoryIter->second.status){
-			fifo = memoryIter;
+std::map<unsigned long long, page>::iterator memoryManager::findFIFO(){
+	std::map<unsigned long long, page>::iterator pageIter, fifo;
+	fifo = pageTable.begin();
+	for (pageIter = pageTable.begin(); pageIter != pageTable.end(); pageIter++){
+		if (fifo->second.status > pageIter->second.status){
+			fifo = pageIter;
 		}
 	}
 	return fifo;

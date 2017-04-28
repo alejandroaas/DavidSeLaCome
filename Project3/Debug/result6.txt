@@ -1,0 +1,54 @@
+Enter policy, LRU = 1, FIFO=0 :  0
+Enter N in bits: 2
+Enter number of frames: 1
+Enter virtual address size: 4
+Give an address: Address: 4
+vpn : 1
+offset: 0
+Compulsory miss
+Physical memory: 2
+Swaps: 0
+
+
+Give an address: Address: 4
+vpn : 1
+offset: 0
+Hit
+Physical memory: 2
+Swaps: 0
+
+
+Give an address: Address: 0
+vpn : 0
+offset: 0
+Compulsory miss
+Physical memory: 6
+Swaps: 0
+
+
+Give an address: Address: 4
+vpn : 1
+offset: 0
+Hit
+Physical memory: 2
+Swaps: 0
+
+
+Give an address: Address: 1
+vpn : 0
+offset: 1
+Miss
+Physical memory: 7
+Swaps: 1
+
+
+Give an address: Address: 4
+vpn : 1
+offset: 0
+Miss
+Physical memory: 2
+Swaps: 2
+
+
+Give an address: 
+Virtual Memory Manager killed!
